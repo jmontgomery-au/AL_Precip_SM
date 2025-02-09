@@ -15,12 +15,38 @@
 <body>
 <div id="map"></div>
 <script>
-    var map = new maplibregl.Map({
+    const map = new maplibregl.Map({
         container: 'map', // container id
-        style: 'https://demotiles.maplibre.org/style.json', // style URL
-        center: [0, 0], // starting position [lng, lat]
-        zoom: 1 // starting zoom
+        style: {
+            'version': 8,
+            'sources': {
+                'raster-tiles': {
+                    'type': 'raster',
+                    'tiles': [
+                        // NOTE: Layers from Stadia Maps do not require an API key for localhost development or most production
+                        // web deployments. See https://docs.stadiamaps.com/authentication/ for details.
+                        'https://api.ellipsis-drive.com/v3/path/7c0fd447-2956-4f87-ba2a-ec53fc76f0cd/raster/timestamp/7adbf6e9-e1cb-40ee-95c9-6dbdb727e707/tile/{z}/{x}/{y}?style=f69d4437-edcd-4e35-be14-0b00f3a2054a&token=epat_g87t20wlvJ1tCIUfFrVhgHfq9eebEKR8geX8r7qeasglAp7apbRPx24E0WIa2enG'
+                    ],
+                    'tileSize': 256,
+                    'attribution':
+                        'Map tiles by <a target="_blank" href="https://stamen.com">Stamen Design</a>; Hosting by <a href="https://stadiamaps.com/" target="_blank">Stadia Maps</a>. Data &copy; <a href="https://www.openstreetmap.org/about" target="_blank">OpenStreetMap</a> contributors'
+                }
+            },
+            'layers': [
+                {
+                    'id': 'simple-tiles',
+                    'type': 'raster',
+                    'source': 'raster-tiles',
+                    'minzoom': 0,
+                    'maxzoom': 22
+                }
+            ]
+        },
+        center: [-86.9023, 32.3182], // starting position
+        zoom: 3 // starting zoom
     });
+    // Add the navigation control
+    map.addControl(new maplibregl.NavigationControl())
 </script>
 </body>
 </html>
