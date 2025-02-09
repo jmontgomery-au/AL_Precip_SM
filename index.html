@@ -41,22 +41,13 @@
                     'maxzoom': 22
                 });
          map.addSource('counties', {
-            type: 'vector',
-            url:
-                'https://github.com/jmontgomery-au/AL_Precip_SM/blob/5afbcdad3d19d48621de99fc2999d6c1940f02b9/alabama-with-county-boundaries_1083.geojson'
+            type: 'geoJSON',
+            "data": "./alabama-with-county-boundaries_1083.geojson"
         });
         map.addLayer({
             'id': 'county-data',
             'type': 'line',
-            'source': 'counties',
-            'layout': {
-                'line-join': 'round',
-                'line-cap': 'round'
-            },
-            'paint': {
-                'line-color': '#ff69b4',
-                'line-width': 1
-            }
+            'source': 'counties'
         });
         });
 </script>
