@@ -33,15 +33,6 @@
                     'attribution':
                         ''
                     });
-        map.addSource('SM-tiles', {
-                    'type': 'raster',
-                    'tiles': [
-                        'https://api.ellipsis-drive.com/v3/path/7c0fd447-2956-4f87-ba2a-ec53fc76f0cd/raster/timestamp/7adbf6e9-e1cb-40ee-95c9-6dbdb727e707/tile/{z}/{x}/{y}?style=f69d4437-edcd-4e35-be14-0b00f3a2054a&token=epat_g87t20wlvJ1tCIUfFrVhgHfq9eebEKR8geX8r7qeasglAp7apbRPx24E0WIa2enG'
-                    ],
-                    'tileSize': 256,
-                    'attribution':
-                        ''
-                    });
         map.addLayer({
                     'id': 'simple-tiles',
                     'type': 'raster',
@@ -49,13 +40,25 @@
                     'minzoom': 0,
                     'maxzoom': 22
                 });
-         map.addLayer({
-                    'id': 'soilmoisture-tiles',
-                    'type': 'raster',
-                    'source': 'SM-tiles',
-                    'minzoom': 0,
-                    'maxzoom': 22
-                });
+         map.addSource('contours', {
+            type: 'vector',
+            url:
+                'https://maps.huntsvilleal.gov/server/rest/services/Boundaries/AlabamaCounties/MapServer?f=pjson'
+        });
+        map.addLayer({
+            'id': 'terrain-data',
+            'type': 'line',
+            'source': 'contours',
+            'source-layer': 'contour',
+            'layout': {
+                'line-join': 'round',
+                'line-cap': 'round'
+            },
+            'paint': {
+                'line-color': '#ff69b4',
+                'line-width': 1
+            }
+        });
         });
 </script>
 </body>
