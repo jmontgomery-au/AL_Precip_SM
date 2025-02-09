@@ -46,13 +46,15 @@
         });
         map.addLayer({
             'id': 'county-data',
-            'type': 'fill',
+            'type': 'line',
             'source': 'counties',
+            
+            'layout': {},
             'paint': {
-                'fill-color': 'none',
-                'fill-outline-color': 'black',
-                'fill-opacity': 0.9
+                'line-color': '#000',
+                'line-width': 3
             }
+        });
         });
         });
 </script>
