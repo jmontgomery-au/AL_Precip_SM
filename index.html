@@ -20,7 +20,7 @@
         style: {
             'version': 8,
             'sources': {
-                'raster-tiles': {
+                'precip-tiles': {
                     'type': 'raster',
                     'tiles': [
                         // NOTE: Layers from Stadia Maps do not require an API key for localhost development or most production
@@ -30,6 +30,8 @@
                     'tileSize': 256,
                     'attribution':
                         ''
+                    },
+                    'SM-tiles': {
                     'type': 'raster',
                     'tiles': [
                         // NOTE: Layers from Stadia Maps do not require an API key for localhost development or most production
@@ -39,13 +41,20 @@
                     'tileSize': 256,
                     'attribution':
                         ''
-                }
+                    }
             },
             'layers': [
                 {
                     'id': 'simple-tiles',
                     'type': 'raster',
-                    'source': 'raster-tiles',
+                    'source': 'precip-tiles',
+                    'minzoom': 0,
+                    'maxzoom': 22
+                }
+                {
+                    'id': 'soilmoisture-tiles',
+                    'type': 'raster',
+                    'source': 'SM-tiles',
                     'minzoom': 0,
                     'maxzoom': 22
                 }
