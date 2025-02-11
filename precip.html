@@ -10,14 +10,50 @@
     <style>
         body { margin: 0; padding: 0; }
         html, body, #map { height: 100%; }
+		.map-overlay {
+        font: bold 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+        position: absolute;
+        width: 25%;
+        top: 0;
+        left: 0;
+        padding: 10px;
+      }
+
+      .map-overlay .map-overlay-inner {
+        background-color: #F5F5F5;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        border-radius: 3px;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+
+      .map-overlay label {
+        display: block;
+        margin: 0 0 10px;
+      }
+
+      .map-overlay input {
+        background-color: transparent;
+        display: inline-block;
+        width: 100%;
+        position: relative;
+        margin: 0;
+        cursor: ew-resize;
+      }
     </style>
 </head>
 <body>
 <div id="map"></div>
+	<div class="map-overlay top">
+		  <div class="map-overlay-inner">
+			<label>Legend:</label>
+			 <img src="Precip_Legend.png" alt="Legend for Precipitation Raster" style="width: 100%"> 
+		  </div>
+	</div>
 <script>
         const map = new maplibregl.Map({
         container: 'map', // container id
-        style: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png', // style URL
+        style: 'https://tiles.openfreemap.org/styles/liberty', // style URL
         center: [-86.9023, 32.3182], // starting position
         zoom: 7 // starting zoom
         });
@@ -27,7 +63,7 @@
                  map.addSource('precip-tiles', {
                     'type': 'raster',
                     'tiles': [
-                        'https://api.ellipsis-drive.com/v3/path/7c0fd447-2956-4f87-ba2a-ec53fc76f0cd/raster/timestamp/55d0a182-5b28-44f9-b7bf-46252161ba76/tile/{z}/{x}/{y}?style=f69d4437-edcd-4e35-be14-0b00f3a2054a&token=epat_g87t20wlvJ1tCIUfFrVhgHfq9eebEKR8geX8r7qeasglAp7apbRPx24E0WIa2enG'
+                        'https://api.ellipsis-drive.com/v3/path/7c0fd447-2956-4f87-ba2a-ec53fc76f0cd/raster/timestamp/06aebb7b-a580-43ab-96c8-d641f67b27af/tile/{z}/{x}/{y}?style=f69d4437-edcd-4e35-be14-0b00f3a2054a&token=epat_g87t20wlvJ1tCIUfFrVhgHfq9eebEKR8geX8r7qeasglAp7apbRPx24E0WIa2enG'
                     ],
                     'tileSize': 256,
                     'attribution':
