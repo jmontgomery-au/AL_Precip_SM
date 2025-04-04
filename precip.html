@@ -104,6 +104,16 @@
                 	'circle-color': '#000000'
             	     }
                 });
+	     map.addLayer({
+                    'id': 'SiteNames',
+                    'type': 'symbol',
+                    'source': 'instrument-locations',
+                    'minzoom': 0,
+                    'maxzoom': 22,
+            	    'layout': {
+                          'text-field': ['get', 'name']
+		    }
+                });
         });
 </script>
 </body>
