@@ -104,11 +104,15 @@
 	     map.addLayer({
                     'id': 'SiteNames',
                     'type': 'symbol',
+		     'icon-image': 'symbol circle shape geometry.svg',
                     'source': 'instrument-locations',
                     'minzoom': 0,
                     'maxzoom': 22,
             	    'layout': {
                           'text-field': ['get', 'Name']
+			  'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
+                	  'text-offset': [0, 0.6],
+                	  'text-anchor': 'top'
 		    }
                 });
         });
