@@ -92,10 +92,14 @@
                     });
         map.addLayer({
                     'id': 'InstrumentedSites',
-                    'type': 'symbol',
+                    'type': 'circle',
                     'source': 'instrument-locations',
                     'minzoom': 0,
-                    'maxzoom': 22
+                    'maxzoom': 22,
+            		'paint': {
+           		'circle-radius': 10,
+                	'circle-color': '#3887be'
+            	     }
                 });
         });
 </script>
